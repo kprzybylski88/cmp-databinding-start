@@ -10,9 +10,12 @@ export class ServerElementComponent implements OnInit {
 
   @Input() serverElement: Server;
 
-  constructor() { }
+  constructor() {
+    console.log('constructor called!');
+   }
 
   ngOnInit() {
+    console.log('ngOnInint called!');
   }
 
 }
