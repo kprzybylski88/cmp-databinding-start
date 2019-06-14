@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 import { Server } from '../shared/server.model';
 
 @Component({
@@ -6,16 +6,25 @@ import { Server } from '../shared/server.model';
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.css'],
 })
-export class ServerElementComponent implements OnInit {
+export class ServerElementComponent implements OnInit, OnDestroy {
 
   @Input() serverElement: Server;
+  @Output() deleteCalled = new EventEmitter<Server>();
 
   constructor() {
     console.log('constructor called!');
    }
 
-  ngOnInit() {
-    console.log('ngOnInint called!');
-  }
+   ngOnInit() {
+     console.log('ngOnInint called!');
 
+   }
+
+   ngOnDestroy() {
+    console.log('ngOnDestroy called!');
+   }
+
+   deleteThisServer() {
+    this.deleteCalled.emit(this.serverElement);
+   }
 }

@@ -23,4 +23,8 @@ export class AppComponent {
           content: serverData.content
         });
       }
+
+      onDeleteCalled(serverData: Server) {
+        this.serverElements.splice(this.serverElements.indexOf(serverData), 1);
+      }
 }

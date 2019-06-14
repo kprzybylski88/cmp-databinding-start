@@ -3,7 +3,9 @@ class="panel panel-default">
 <div class="panel-heading">{{ serverElement.name }}</div>
 <div class="panel-body">
   <p>
-    <ng-content></ng-content>
+      <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+      <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+      <button class="btn btn-danger pull-right" (click)="deleteThisServer()">delete!</button>
   </p>
 </div>
 </div>
